@@ -1,0 +1,70 @@
+#include <iostream>
+#include <fstream>
+ 
+using namespace std;
+bool czy_C1(string s)
+{
+    int ile1=0;
+ 
+ 
+    for(int i=0; i<s.size(); i++)
+    {
+        while(s[i]>='0' && s[i]<='9')
+        {
+            i++;
+            ile1++;
+        }
+        if(ile1==4)return true;
+        ile1=0;
+    }
+    return false;
+ 
+}
+bool czy_C2(string s)
+{
+ 
+    int ile3=0;
+    for(int i=0; i<s.size(); i++)
+    {
+        while(s[i]>='A' && s[i]<='Z')
+        {
+            i++;
+            ile3++;
+        }
+        if(ile3==4)return true;
+        ile3=0;
+    }
+    return false;
+ 
+}
+bool czy_C3(string s)
+{
+ 
+    int ile2=0;
+ 
+    for(int i=0; i<s.size(); i++)
+    {
+        while(s[i]>='a' && s[i]<='z')
+        {
+            i++;
+            ile2++;
+        }
+        if(ile2==4)return true;
+        ile2=0;
+    }
+    return false;
+ 
+}
+int main()
+{
+    string s;
+    int ile=0;
+    ifstream we("hasla.txt");
+    for(int i=0; i<200; i++)
+    {
+        we>>s;
+        if(czy_C1(s) || czy_C2(s) || czy_C3(s))ile++;
+    }
+    cout<<ile<<endl;
+    return 0;
+}
